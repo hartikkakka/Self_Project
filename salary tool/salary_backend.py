@@ -4,8 +4,8 @@ import sqlite3
 def connect():
     conn = sqlite3.connect("employee_data.db")
     cursor = conn.cursor()
-    cursor.execute("CREATE TABLE IF NOT EXISTS employee_data (id INTEGER PRIMARY KEY, name TEXT, ctc INTEGER,pl "
-                   "INTEGER, Ac_number INTEGER, IFSC TEXT)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS employee_data (id INTEGER PRIMARY KEY, name TEXT, ctc INTEGER,"
+                   "Ac_number INTEGER, IFSC TEXT)")
 
     conn.commit()
     conn.close()
@@ -14,7 +14,8 @@ def connect():
 def insert(name, ctc, Ac_number, IFSC):
     conn = sqlite3.connect("employee_data.db")
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO employee_data (name, ctc, Ac_number, IFSC) VALUES (?,?,?,?)", (name, ctc, Ac_number, IFSC))
+    cursor.execute("INSERT INTO employee_data (name, ctc, Ac_number, IFSC) VALUES (?,?,?,?)", (name, ctc, Ac_number,
+                                                                                               IFSC))
     conn.commit()
     conn.close()
 
@@ -51,12 +52,10 @@ def delete(name):
     conn.close()
 
 
-def update(name, ctc, pl, Ac_number, IFSC):
+def update(name, ctc, Ac_number, IFSC):
     conn = sqlite3.connect("employee_data.db")
     cursor = conn.cursor()
-    cursor.execute("UPDATE employee_data SET ctc=?, pl=?, Ac_number=?, IFSC=? WHERE name=?", (ctc, pl, Ac_number, IFSC, name))
+    cursor.execute("UPDATE employee_data SET ctc=?, pl=?, Ac_number=?, IFSC=? WHERE name=?", (ctc, Ac_number, IFSC,
+                                                                                              name))
     conn.commit()
     conn.close()
-
-
-
